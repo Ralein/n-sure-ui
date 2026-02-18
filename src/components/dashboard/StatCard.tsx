@@ -1,5 +1,6 @@
 import React from "react";
 import { IconType } from "react-icons";
+import { motion } from "framer-motion";
 
 interface StatCardProps {
     title: string;
@@ -19,7 +20,11 @@ const StatCard: React.FC<StatCardProps> = ({
     extraInfo
 }) => {
     return (
-        <div className="flex h-[100px] items-center justify-between rounded-[20px] bg-white px-6 py-4 shadow-sm hover:shadow-md transition-shadow">
+        <motion.div
+            whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="flex h-[100px] items-center justify-between rounded-[20px] bg-white px-6 py-4 shadow-sm transition-shadow cursor-default"
+        >
             <div className="flex flex-col">
                 <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-1">
                     {title}
@@ -38,7 +43,7 @@ const StatCard: React.FC<StatCardProps> = ({
                     <Icon size={24} />
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import StatCard from "@/components/dashboard/StatCard";
 import ConsentPieChart from "@/components/dashboard/ConsentPieChart";
 import TppBarChart from "@/components/dashboard/TppBarChart";
@@ -8,16 +9,22 @@ import MonthlyQuoteBarChart from "@/components/dashboard/MonthlyQuoteBarChart";
 import LobPieChart from "@/components/dashboard/LobPieChart";
 import ApiSuccessPieChart from "@/components/dashboard/ApiSuccessPieChart";
 import { MdInsertChart, MdErrorOutline, MdAccessTime, MdOutlinePauseCircle, MdDescription } from "react-icons/md";
+import { containerVariants, itemVariants } from "@/components/MotionWrapper";
 
 const Dashboard = () => {
     return (
-        <div className="flex flex-col gap-6">
+        <motion.div
+            className="flex flex-col gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+        >
             <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold text-navy">Dashboard</h1>
+                <motion.h1 variants={itemVariants} className="text-2xl font-bold text-navy">Dashboard</motion.h1>
             </div>
 
             {/* Stat Cards Row */}
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
+            <motion.div variants={itemVariants} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
                 <StatCard
                     title="ACTIVE CONSENTS"
                     count="527"
@@ -53,34 +60,34 @@ const Dashboard = () => {
                     iconBgColor="bg-[#E1F5FE]"
                     iconColor="text-[#03A9F4]"
                 />
-            </div>
+            </motion.div>
 
             {/* Selectors Row */}
-            <div className="flex justify-end gap-4">
+            <motion.div variants={itemVariants} className="flex justify-end gap-4">
                 <div className="flex flex-col">
                     <label className="text-xs text-gray-500 mb-1">Select Year</label>
-                    <select className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-navy outline-none focus:ring-2 focus:ring-navy-light">
+                    <select className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-navy outline-none focus:ring-2 focus:ring-navy-light shadow-sm hover:shadow-md transition-shadow">
                         <option>2026</option>
                         <option>2025</option>
                     </select>
                 </div>
                 <div className="flex flex-col">
                     <label className="text-xs text-gray-500 mb-1">Select Month</label>
-                    <select className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-navy outline-none focus:ring-2 focus:ring-navy-light">
+                    <select className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-navy outline-none focus:ring-2 focus:ring-navy-light shadow-sm hover:shadow-md transition-shadow">
                         <option>February</option>
                         <option>January</option>
                     </select>
                 </div>
-            </div>
+            </motion.div>
 
             {/* First Charts Row */}
-            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            <motion.div variants={itemVariants} className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                 <ConsentPieChart />
                 <TppBarChart />
-            </div>
+            </motion.div>
 
             {/* Second Charts Row */}
-            <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+            <motion.div variants={itemVariants} className="grid grid-cols-1 gap-5 lg:grid-cols-3">
                 <div className="lg:col-span-1">
                     <MonthlyQuoteBarChart />
                 </div>
@@ -90,8 +97,8 @@ const Dashboard = () => {
                 <div className="lg:col-span-1">
                     <ApiSuccessPieChart />
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 
