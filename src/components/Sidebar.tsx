@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -15,8 +15,12 @@ import {
     MdChevronRight
 } from "react-icons/md";
 
-const Sidebar = () => {
-    const [isCollapsed, setIsCollapsed] = useState(true);
+interface SidebarProps {
+    isCollapsed: boolean;
+    setIsCollapsed: (collapsed: boolean) => void;
+}
+
+const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
     const pathname = usePathname();
 
     const menuItems = [

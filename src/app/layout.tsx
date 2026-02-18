@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import MainLayout from "@/components/MainLayout";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,16 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased bg-brand-bg text-navy`}>
-        <div className="flex h-screen flex-col overflow-hidden">
-          <Header />
-          <div className="flex flex-1 pt-16">
-            <Sidebar />
-            <main className="flex-1 overflow-y-auto bg-brand-bg p-4 md:p-8 ml-[70px] transition-all duration-300">
-              {children}
-            </main>
-          </div>
-        </div>
+      <body className={`${inter.variable} font-sans antialiased text-navy`}>
+        <MainLayout>
+          {children}
+        </MainLayout>
       </body>
     </html>
   );
